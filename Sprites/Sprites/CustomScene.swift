@@ -11,9 +11,9 @@ import SpriteKit
 
 extension UIColor {
     static var random: UIColor {
-        return UIColor(red: .random(in: 0...1),
-                       green: .random(in: 0...1),
-                       blue: .random(in: 0...1),
+        return UIColor(red: .random(in: 0.5...1),
+                       green: .random(in: 0.5...1),
+                       blue: .random(in: 0.5...1),
                        alpha: 1.0)
     }
 }
@@ -29,5 +29,12 @@ class CustomScene: SKScene {
         node.fillColor = .random
         node.position = touch.location(in: self)
         addChild(node)
+        
+        let scaleStart = SKAction.scale(to: 1.3, duration: 0.5)
+        let scaleEnd = SKAction.scaleX(to: 1, duration: 0.5)
+        let sequenceScale = SKAction.sequence([scaleStart, scaleEnd])
+        
+        
+        node.run(sequenceScale)
     }
 }
